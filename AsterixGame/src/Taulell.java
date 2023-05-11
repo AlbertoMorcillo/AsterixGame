@@ -10,7 +10,7 @@ public class Taulell {
     public void dibu(){
 
     }
-    public void (Pocio p, Jugador, Enemic[] enemics){
+    public void init (Pocio p, Jugador jug, Enemic[] enemics){
 
     }
 }

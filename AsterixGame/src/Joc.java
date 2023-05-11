@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Joc {
-    private static jugador asterix;
-    private static taulell bosc;
+    private static Jugador asterix;
+    private static Taulell bosc;
     static int COLUMNES;
     static int FILES;
     private static boolean fi;
@@ -23,7 +23,8 @@ public class Joc {
         return true;
     }
     public static Coordenades posicioAleatoria(){
+        ;
 
-        return Coordenades;
+        return new Coordenades();
     }
 }
