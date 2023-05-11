@@ -4,6 +4,4 @@ public interface Moviment {
      void mouR();
      void mouU();
      void setVelocitat(int velocitat);
-
-
 }

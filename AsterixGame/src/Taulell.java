@@ -8,6 +8,9 @@ public class Taulell {
         this.columnes = columnes;
     }
     public void dibu(){
+        taulell = new char[files][columnes];
+
+
 
     }
     public void init (Pocio p, Jugador jug, Enemic[] enemics){
