@@ -13,6 +13,7 @@ public class Taulell {
             for (int j = 0; j < columnes; j++) {
                 System.out.print(" " + taulell[i][j] + " ");
             }
+            System.out.println();
         }
     }
     public void init (Pocio p, Jugador jug, Enemic[] enemics){
