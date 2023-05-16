@@ -34,8 +34,12 @@ public class Joc {
             }else if(legionaris.get(i).coords.fila < asterix.coords.fila){
                 legionaris.get(i).mouD();
             } else{
-               if (legionaris.get(i).coords.columna > asterix.coords.columna);
-               else if (legionaris)
+               if (legionaris.get(i).coords.columna > asterix.coords.columna){
+                   legionaris.get(i).mouL();
+               }
+               else if (legionaris.get(i).coords.columna < asterix.coords.columna){
+                   legionaris.get(i).mouR();
+               }
             } {
                 legionaris.get(i).mouL();
 
