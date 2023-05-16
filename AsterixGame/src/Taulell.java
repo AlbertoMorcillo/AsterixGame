@@ -29,9 +29,10 @@ public class Taulell {
         }
         taulell[jug.coords.fila] [jug.coords.columna] = jug.nom;
         taulell[p.coords.fila] [p.coords.columna] = p.nom;
+        Enemic e;
 
         for (int i = 0; i < enemics.size(); i++) {
-            Enemic e = enemics.get(i);
+            e = enemics.get(i);
             taulell[e.coords.fila] [e.coords.columna] = e.nom;
         }
     }

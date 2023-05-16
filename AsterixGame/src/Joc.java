@@ -19,16 +19,42 @@ public class Joc {
         legionaris.add(new Enemic('L', new Coordenades(FILES-2,COLUMNES-2)));
         legionaris.add(new Enemic('L', new Coordenades(1,COLUMNES-2)));
         legionaris.add(new Enemic('L', new Coordenades(FILES-2,1)));
-
             do {
                 bosc.init(pocio, asterix, legionaris);
                 bosc.dibu();
                 fi = mouJugador();
                 if (!fi) fi = mouEnemics();
             } while (!fi);
-
     }
     public static boolean mouEnemics(){
+        //ToDo: Son 4 líneas de código.
+        for (int i = 0; i < legionaris.size(); i++) {
+            if(legionaris.get(i).coords.fila > asterix.coords.fila){
+                legionaris.get(i).mouU();
+            }else if(legionaris.get(i).coords.fila < asterix.coords.fila){
+                legionaris.get(i).mouD();
+            } else{
+               if (legionaris.get(i).coords.columna > asterix.coords.columna);
+               else if (legionaris)
+            } {
+                legionaris.get(i).mouL();
+
+            }
+
+        }
+
+
+        /*
+* IF F(L) > F(A) = para arriba
+* else if F(L) <  F(A) = para abajo
+* else{
+* IF C(L) > C(A) = para izquierda
+ * else if C(L) <  C(A) = para derecha
+* }
+*
+* */
+
+
         return true;
     }
     public static boolean mouJugador(){
