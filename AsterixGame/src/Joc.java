@@ -27,7 +27,6 @@ public class Joc {
             } while (!fi);
     }
     public static boolean mouEnemics(){
-        //ToDo: Son 4 líneas de código.
         for (int i = 0; i < legionaris.size(); i++) {
             if(legionaris.get(i).coords.fila > asterix.coords.fila){
                 legionaris.get(i).mouU();
@@ -44,22 +43,21 @@ public class Joc {
                 legionaris.get(i).mouL();
             }
         }
-
-        /*
-* IF F(L) > F(A) = para arriba
-* else if F(L) <  F(A) = para abajo
-* else{
-* IF C(L) > C(A) = para izquierda
- * else if C(L) <  C(A) = para derecha
-* }
-*
-* */
-
-
         return true;
     }
+
+    /*
+     * IF F(L) > F(A) = para arriba
+     * else if F(L) <  F(A) = para abajo
+     * else{
+     * IF C(L) > C(A) = para izquierda
+     * else if C(L) <  C(A) = para derecha
+     * }
+     *
+     * */
     public static boolean mouJugador(){
         char opcion;
+        boolean finalizar;
         do {
             System.out.println("¿Qué movimiento quieres hacer?");
             System.out.println("A - Left");
@@ -73,19 +71,27 @@ public class Joc {
         switch (opcion){
             case 'A':
                 asterix.mouL();
-                return false;
+                finalizar = false;
+                break;
             case 'D':
                 asterix.mouR();
-              return false;
+                finalizar = false;
+                break;
             case 'W':
                 asterix.mouU();
-                return false;
+                finalizar = false;
+                break;
             case 'S':
                 asterix.mouD();
-                return false;
+                finalizar = false;
+                break;
             default:
-                return true;
+                finalizar = true;
         }
+        if(asterix.coords.fila == pocio.coords.fila && asterix.coords.columna == pocio.coords.columna){
+            asterix.prenPocio();
+        }
+        return finalizar;
     }
     public static Coordenades posicioAleatoria(){
         int files = (int) (Math.random() * (FILES - 2 + 1) + 2);

@@ -5,6 +5,7 @@ public class Jugador extends Personatge{
     }
 
     void prenPocio(){
-
+        energia = 10;
+        velocitat = 2;
     }
 }

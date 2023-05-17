@@ -30,6 +30,7 @@ public abstract class Personatge extends Element implements Moviment {
 
     @Override
     public void setVelocitat(int velocitat) {
+     //int velocitatConPocio = velocitat + 1;
 
     }
 }
