@@ -42,11 +42,8 @@ public class Joc {
                }
             } {
                 legionaris.get(i).mouL();
-
             }
-
         }
-
 
         /*
 * IF F(L) > F(A) = para arriba
