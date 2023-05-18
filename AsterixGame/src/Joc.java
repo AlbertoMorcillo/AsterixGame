@@ -104,7 +104,10 @@ public class Joc {
         }
         return finalizar;
     }
-
+    //ToDo: Comprobar que el jugador si tiene la pocion si la vuelve a tocar que no se le vuelva a rellenar.
+    //ToDo: Hacer que si el jugador tome la pocion la letra "p" desaparezca (no borrarla).
+    //ToDo: mirar el orden que tienen de comprobar si el legionario ha matado a asterix o no.
+    //ToDo: Hacer que la poción vuelva a salir de forma aleatoria.
     public static Coordenades posicioAleatoria() {
         int fila = (int) (Math.random() * (FILES - 4) + 2);
         int columna = (int) (Math.random() * (COLUMNES - 4) + 2);
