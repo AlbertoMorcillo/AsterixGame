@@ -7,25 +7,31 @@ public abstract class Personatge extends Element implements Moviment {
         this.velocitat = velocitat;
     }
 
+    public void mouU() {
+        if (coords.fila > 1) {
+            --coords.fila;
+        }
+    }
 
     @Override
     public void mouD() {
-
+        if (coords.fila < Joc.FILES - 2) {
+          ++coords.fila;
+        }
     }
 
     @Override
     public void mouL() {
-
+        if (coords.columna > 1) {
+            --coords.columna;
+        }
     }
 
     @Override
     public void mouR() {
-
-    }
-
-    @Override
-    public void mouU() {
-
+        if (coords.columna < Joc.COLUMNES - 2) {
+            ++coords.columna;
+        }
     }
 
     @Override

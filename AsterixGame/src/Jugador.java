@@ -8,4 +8,10 @@ public class Jugador extends Personatge{
         energia = 10;
         velocitat = 2;
     }
+    void restarEnergia(){
+        --energia;
+    }
+    public int getEnergia(){
+        return energia;
+    }
 }

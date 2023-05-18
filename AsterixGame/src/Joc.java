@@ -12,38 +12,35 @@ public class Joc {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-            bosc = new Taulell(FILES, COLUMNES);
-            pocio = new Pocio('P', posicioAleatoria());
-            asterix = new Jugador('A', posicioAleatoria());
-        legionaris.add(new Enemic('L', new Coordenades(1,1)));
-        legionaris.add(new Enemic('L', new Coordenades(FILES-2,COLUMNES-2)));
-        legionaris.add(new Enemic('L', new Coordenades(1,COLUMNES-2)));
-        legionaris.add(new Enemic('L', new Coordenades(FILES-2,1)));
-            do {
-                bosc.init(pocio, asterix, legionaris);
-                bosc.dibu();
-                fi = mouJugador();
-                if (!fi) fi = mouEnemics();
-            } while (!fi);
+        bosc = new Taulell(FILES, COLUMNES);
+        pocio = new Pocio('P', posicioAleatoria());
+        asterix = new Jugador('A', posicioAleatoria());
+        legionaris.add(new Enemic('L', new Coordenades(1, 1)));
+        legionaris.add(new Enemic('L', new Coordenades(FILES - 2, COLUMNES - 2)));
+        legionaris.add(new Enemic('L', new Coordenades(1, COLUMNES - 2)));
+        legionaris.add(new Enemic('L', new Coordenades(FILES - 2, 1)));
+        do {
+            bosc.init(pocio, asterix, legionaris);
+            bosc.dibu();
+            fi = mouJugador();
+            if (!fi) mouEnemics();
+        } while (!fi);
     }
-    public static boolean mouEnemics(){
+
+    public static void mouEnemics() {
         for (int i = 0; i < legionaris.size(); i++) {
-            if(legionaris.get(i).coords.fila > asterix.coords.fila){
+            if (legionaris.get(i).coords.fila > asterix.coords.fila) {
                 legionaris.get(i).mouU();
-            }else if(legionaris.get(i).coords.fila < asterix.coords.fila){
+            } else if (legionaris.get(i).coords.fila < asterix.coords.fila) {
                 legionaris.get(i).mouD();
-            } else{
-               if (legionaris.get(i).coords.columna > asterix.coords.columna){
-                   legionaris.get(i).mouL();
-               }
-               else if (legionaris.get(i).coords.columna < asterix.coords.columna){
-                   legionaris.get(i).mouR();
-               }
-            } {
-                legionaris.get(i).mouL();
+            } else {
+                if (legionaris.get(i).coords.columna > asterix.coords.columna) {
+                    legionaris.get(i).mouL();
+                } else if (legionaris.get(i).coords.columna < asterix.coords.columna) {
+                    legionaris.get(i).mouR();
+                }
             }
         }
-        return true;
     }
 
     /*
@@ -55,7 +52,7 @@ public class Joc {
      * }
      *
      * */
-    public static boolean mouJugador(){
+    public static boolean mouJugador() {
         char opcion;
         boolean finalizar;
         do {
@@ -66,9 +63,9 @@ public class Joc {
             System.out.println("S - Down");
             System.out.println("X - Exit");
             opcion = scan.nextLine().toUpperCase().charAt(0);
-        } while(!(opcion == 'A' || opcion == 'D' || opcion == 'W' || opcion == 'S' || opcion == 'X'));
+        } while (!(opcion == 'A' || opcion == 'D' || opcion == 'W' || opcion == 'S' || opcion == 'X'));
 
-        switch (opcion){
+        switch (opcion) {
             case 'A':
                 asterix.mouL();
                 finalizar = false;
@@ -88,14 +85,29 @@ public class Joc {
             default:
                 finalizar = true;
         }
-        if(asterix.coords.fila == pocio.coords.fila && asterix.coords.columna == pocio.coords.columna){
+        if (asterix.getEnergia() > 0) {
+            asterix.restarEnergia();
+        }
+        if (asterix.coords.fila == pocio.coords.fila && asterix.coords.columna == pocio.coords.columna) {
             asterix.prenPocio();
+        }
+        for (int i = 0; i < legionaris.size(); i++) {
+            if (asterix.coords.fila == legionaris.get(i).coords.fila && asterix.coords.columna == legionaris.get(i).coords.columna)
+            {
+                if (asterix.energia > 0) {
+                    legionaris.remove(i);
+                    --i;
+                } else {
+                    return true;
+                }
+            }
         }
         return finalizar;
     }
-    public static Coordenades posicioAleatoria(){
-        int files = (int) (Math.random() * (FILES - 2 + 1) + 2);
-        int columnes = (int) (Math.random() * (COLUMNES - 2 + 1) + 2);
-        return new Coordenades(files, columnes);
+
+    public static Coordenades posicioAleatoria() {
+        int fila = (int) (Math.random() * (FILES - 4) + 2);
+        int columna = (int) (Math.random() * (COLUMNES - 4) + 2);
+        return new Coordenades(fila, columna);
     }
 }
